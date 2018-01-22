@@ -16,3 +16,24 @@ const monologueLines = [
   'No.',
   'I am the one who knocks!'
 ];
+
+const getTotal = (battery, currentValue) => battery + currentValue;
+
+const totalBatteries = batteryBatches.reduce(getTotal);
+
+const doubleThem = (battery, currentValue) => (battery * 2) + currentValue;
+
+const wordCountMap = monologueLines.reduce(countThem, {});
+
+function countThem(sentence, line) {
+  //store the index
+  const monoIndex = line.split(' ').length;
+  //if we have not seen this value yet add it to the object
+  if (!sentence.hasOwnProperty(monoIndex)) {
+    sentence[monoIndex] = 0;
+  }
+  //we have seen it, add it to the appropriate index
+  sentence[monoIndex]++;
+
+  return sentence;
+}
